@@ -1,7 +1,7 @@
 local lume = require "lib/lume"
 local json = require "lib/json"
 
-local w, h = 1300, 720
+local w, h = 1280, 720
 local players = {}
 local start_time = 0
 local knockback_mult = 5
@@ -12,26 +12,39 @@ local appleSound = love.audio.newSource("apple.wav", "static")
 local objects = {}
 local view_x, view_y = -420, -590
 local view_delta = 10
+local OBJST_CHECK = false
 
 local simulation_started = false
-
 local generation = 0
-local OBJST_CHECK = false
-local LEVEL_NAME = "level2.json"
+
+
+
+
+
+
 local TIME_LIMIT = 10
+local TARGET_LOCATION = {}
+
+local LEVEL_NAME = "level0.json"
 local POPULATION_SIZE = 100
 local GENES = { ["00"] = "l", ["01"] = "r", ["10"] = "f", __index = nil } -- nucleotides
 local GENE_LENGTH = 2 -- "l", "f", "r"
-local CHROMOSOME_LENGTH = TIME_LIMIT * 10 * GENE_LENGTH
+local CHROMOSOME_LENGTH = 200 -- TIME_LIMIT * 10 * GENE_LENGTH
 local CROSSOVER_RATE = 0.4
-local TARGET_LOCATION = {}
 local MUTATION_RATE = 0.02
 
 --[[ SAMPLE CHROMOSOME --
+
 00110000100110000100111100000101001110101100001101010101100000011101000011001100001111000
 00010101111111001000001111000010100111111010010011001011111001110001001001101001011111101
 0000001110100100011001
+
 ]]--
+
+
+
+
+
 
 
 function newPlayer(x, y, chromo)
