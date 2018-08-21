@@ -8,7 +8,6 @@ local knockback_mult = 5
 local border_width = 10
 local apples = {}
 local sound_on = true
-local appleSound = love.audio.newSource("apple.wav", "static")
 local objects = {}
 local view_x, view_y = -420, -570
 local view_delta = 10
@@ -17,19 +16,14 @@ local OBJST_CHECK = false
 local simulation_started = false
 local generation = 0
 
-
-
-
-
-
 local TIME_LIMIT = 10
 local TARGET_LOCATION = {}
 
 local LEVEL_NAME = "level2.json"
 local POPULATION_SIZE = 100
 local GENES = { ["00"] = "l", ["01"] = "r", ["10"] = "f", __index = nil } -- nucleotides
-local GENE_LENGTH = 2         -- "l", "f", "r"
-local CHROMOSOME_LENGTH = 200 -- TIME_LIMIT * 10 * GENE_LENGTH
+local GENE_LENGTH = 2 -- "l", "f", "r"
+local CHROMOSOME_LENGTH = TIME_LIMIT * 10 * GENE_LENGTH
 local CROSSOVER_RATE = 0.4
 local MUTATION_RATE = 0.02
 
@@ -39,13 +33,7 @@ local MUTATION_RATE = 0.02
 00010101111111001000001111000010100111111010010011001011111001110001001001101001011111101
 0000001110100100011001
 
-]]--
-
-
-
-
-
-
+]]--s
 
 function newPlayer(x, y, chromo)
   local p = {
@@ -326,12 +314,6 @@ function love.keypressed(k)
 
   if k == "s" then
     sound_on = not sound_on
-  end
-end
-
-function playSound()
-  if sound_on then
-    appleSound:play()
   end
 end
 
