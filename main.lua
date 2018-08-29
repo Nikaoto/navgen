@@ -4,9 +4,6 @@ local json = require "lib/json"
 local w, h = 1280, 700
 local players = {}
 local start_time = 0
-local knockback_mult = 5
-local border_width = 10
-local apples = {}
 local sound_on = true
 local objects = {}
 local view_x, view_y = -420, -570
@@ -19,8 +16,8 @@ local generation = 0
 local TIME_LIMIT = 10
 local TARGET_LOCATION = {}
 
-local LEVEL_NAME = "level2.json"
-local POPULATION_SIZE = 100
+local LEVEL_NAME = "level0.json"
+local POPULATION_SIZE = 1000
 local GENES = { ["00"] = "l", ["01"] = "r", ["10"] = "f", __index = nil } -- nucleotides
 local GENE_LENGTH = 2 -- "l", "f", "r"
 local CHROMOSOME_LENGTH = TIME_LIMIT * 10 * GENE_LENGTH
@@ -336,40 +333,12 @@ function cameraControls()
 end
 
 function isColliding(p, obj)
-  local rectpoint = {0, 0}
-  -- Get closest point on rect to player
-  if p.y <= obj.y then --[[ Top ]]--
-    if p.x < obj.x then -- Left
-      rectpoint = {obj.x, obj.y}
-    elseif p.x > obj.x and p.x < obj.x + obj.width then -- Center
-      rectpoint = {p.x, obj.y}
-    elseif p.x > obj.x + obj.width then-- Right
-      rectpoint = {obj.x + obj.width, obj.y}
-    end
-  elseif p.y >= obj.y and p.y <= obj.y + obj.height then --[[ Middle ]]
-    if p.x < obj.x then -- Left
-      rectpoint = {obj.x, p.y}
-    elseif p.x > obj.x and p.x < obj.x + obj.width then -- Center
-      rectpoint = {p.x, p.y}
-    elseif p.x > obj.x + obj.width then -- Right
-      rectpoint = {obj.x + obj.width, p.y}
-    end
-  elseif p.y >= obj.y + obj.height then --[[ Bottom ]]
-    if p.x < obj.x then -- Left
-      rectpoint = {obj.x, obj.y + obj.height}
-    elseif p.x > obj.x and p.x < obj.x + obj.width then -- Center
-      rectpoint = {p.x, obj.y + obj.height}
-    elseif p.x > obj.x + obj.width then -- Right
-      rectpoint = {obj.x + obj.width, obj.y + obj.height}
-    end
-  end
-
-  -- Check distance from closest point
-  if lume.distance(p.x, p.y, rectpoint[1], rectpoint[2], true) <= p.radius * p.radius then
-    return true
-  end
-
-  return false
+  -- Get player tip coordinate and check aabb with object
+  local tip = {
+    p.x + p.radius * math.sin(p.rotation),
+    p.y - p.radius * math.cos(p.rotation)
+  }
+  return lume.aabb(tip[1], tip[2], 0, 0, obj.x, obj.y, obj.width, obj.height)
 end
 
 function readFile(path)
