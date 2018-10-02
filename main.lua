@@ -17,7 +17,7 @@ local TIME_LIMIT = 10
 local TARGET_LOCATION = {}
 
 local LEVEL_NAME = "level0.json"
-local POPULATION_SIZE = 1000
+local POPULATION_SIZE = 100
 local GENES = { ["00"] = "l", ["01"] = "r", ["10"] = "f", __index = nil } -- nucleotides
 local GENE_LENGTH = 2 -- "l", "f", "r"
 local CHROMOSOME_LENGTH = TIME_LIMIT * 10 * GENE_LENGTH
