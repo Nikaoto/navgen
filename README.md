@@ -1,5 +1,5 @@
 # navgen
-The agents learn how to navigate a level using an evolutonary algorithm that maps maps each action to their DNA and keeps breeding and testing them indefinitely.
+The agents learn how to navigate a level using an evolutonary algorithm that maps each action to their DNA and keeps breeding and testing them indefinitely.
 
 არსებები სწავლობენ მოცემულ გარემოში ნავიგაციას ევოლუციური ალგორითმის გამოყენებით, რომელიც თავიანთ დნმს შეუსაბამებს თითოეულ მოქმედებას.
 
