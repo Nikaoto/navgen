@@ -8,7 +8,7 @@ School in Tskhneti.
 გამოყენებით, რომელიც თავიანთ დნმს შეუსაბამებს თითოეულ მოქმედებას. მივაფუჩეჩე
 უცბად რადგან ბაქსვუდის სკოლაში მიმიწვიეს ლექციის ჩასატარებლად ლექციისთვის.
 
-[The agents trying their best](./navgen_preview.gif)
+![The agents trying their best](./navgen_preview.gif)
 
 ## Running
 
