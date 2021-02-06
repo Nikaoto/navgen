@@ -12,7 +12,7 @@ School in Tskhneti.
 
 ## Running
 
-Requires [Love2D](love2d.org) to run.
+Requires [Love2D](https://love2d.org) to run.
 
 ```
 git clone
