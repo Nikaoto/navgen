@@ -4,7 +4,6 @@ local json = require "lib/json"
 local w, h = 1280, 700
 local players = {}
 local start_time = 0
-local sound_on = true
 local objects = {}
 local view_x, view_y = -420, -570
 local view_delta = 10
@@ -16,7 +15,7 @@ local generation = 0
 local TIME_LIMIT = 10
 local TARGET_LOCATION = {}
 
-local LEVEL_NAME = "level0.json"
+local LEVEL_NAME = "level3.json"
 local POPULATION_SIZE = 100
 local GENES = { ["00"] = "l", ["01"] = "r", ["10"] = "f", __index = nil } -- nucleotides
 local GENE_LENGTH = 2 -- "l", "f", "r"
@@ -307,10 +306,6 @@ function love.keypressed(k)
 
   if k == "return" then
     simulation_started = true
-  end
-
-  if k == "s" then
-    sound_on = not sound_on
   end
 end
 
